@@ -1,0 +1,1053 @@
+/* ------------------------------------------------------------------------------------------
+-------------------------------------- Table of contents ------------------------------------
+---------------------------------------------------------------------------------------------
+01. Imports
+02. Custom Properties
+03. Reset
+04. Global Styles
+05. Body
+06. Preloader
+07. Header
+08. About
+09. Banner
+10. Classes
+11. Schedule
+12. Trainers
+13. Contact
+14. Footer
+15. MEDIA QUERIES
+16. Max-width: 1000px
+17. Max-width: 750px
+18. Max-width: 600px
+19. Max-width: 350px
+
+----------------------------------------------------------------------------------------------- */
+
+/* ----------------------------- 01. Imports ------------------------------ */
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i");
+
+/* ----------------------------- 02. Custom Properties ------------------------------ */
+
+:root {
+	--orange: #ed563b;
+	--white: #ffffff;
+	--light: #f7f7f7;
+	--black: #000000;
+	--light-black: #1e1e1e;
+	--grey: #7a7a7a;
+	--dark-grey: #232d39;
+}
+
+/* ----------------------------- 03. Reset ------------------------------ */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* ----------------------------- 04. Global Styles ------------------------------ */
+
+.orange,
+.active {
+	color: var(--orange) !important;
+}
+
+.btn {
+	background: var(--orange) !important;
+	display: inline-block !important;
+	color: var(--light) !important;
+	text-transform: uppercase !important;
+	text-decoration: none !important;
+	text-align: center !important;
+	font-weight: 400 !important;
+	border: none !important;
+	cursor: pointer !important;
+}
+
+#about,
+#classes,
+#schedule,
+#trainers {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	background: var(--white);
+	padding: 10% 0 8% 0;
+}
+
+#about--header,
+#classes--header,
+#schedule--header,
+#trainers--header {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+#about--header h1,
+#classes--header h1,
+#schedule--header h1,
+#trainers--header h1 {
+	color: var(--dark-grey);
+	font-size: 1.75rem;
+	text-transform: uppercase;
+}
+
+#about--header img,
+#classes--header img,
+#schedule--header img,
+#trainers--header img {
+	display: block;
+	margin: 1rem 0;
+}
+
+#about--header p,
+#classes--header p,
+#schedule--header p,
+#trainers--header p {
+	color: var(--grey);
+	font-size: 0.875rem;
+}
+
+/* ----------------------------- 05. Body ------------------------------ */
+
+body {
+	font-family: "Poppins", sans-serif;
+	background: var(--white);
+	width: 100%;
+}
+
+body.no--scroll {
+	height: 100vh !important;
+	overflow: hidden !important;
+}
+
+/* ----------------------------- 06. Preloader ------------------------------ */
+
+#pre--loader {
+	position: fixed;
+	background-color: #232d39;
+	display: block;
+	width: 100vw;
+	height: 100vh;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#pre--loader.hide--loader {
+	display: none !important;
+}
+
+#pre--loader__inner {
+	background: transparent;
+	width: 7rem;
+	position: relative;
+}
+
+#pre--loader__inner .dot {
+	display: block;
+	background: var(--white);
+	width: 1rem;
+	height: 1rem;
+	border-radius: 50%;
+}
+
+#single--dot {
+	position: absolute;
+	top: 0;
+	left: 0;
+	animation: fmove 2.5s infinite ease-in-out;
+}
+
+#dots {
+	position: absolute;
+	top: 0;
+	left: calc(25% + 0.5rem);
+	width: calc(75% - 0.5rem);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	animation: bmove 2.5s infinite ease-in-out;
+}
+
+@keyframes fmove {
+	50% {
+		left: calc(100% - 1rem);
+	}
+
+	100% {
+		left: 0;
+	}
+}
+
+@keyframes bmove {
+	50% {
+		left: 0;
+	}
+
+	100% {
+		left: calc(25% + 0.5rem);
+	}
+}
+
+/* ----------------------------- 07. Header ------------------------------ */
+
+#header {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	overflow: hidden;
+}
+
+#header--vidBG {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: -2;
+}
+
+#header-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(35, 45, 57, 0.8);
+	z-index: -1;
+}
+
+#header--nav {
+	background: rgba(250, 250, 250, 0.1);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 5%;
+	z-index: 10;
+	transition: top 0.1s ease;
+}
+
+#header--nav.hide--nav {
+	top: -100px;
+}
+
+#header--nav.change--nav__bg {
+	background: rgba(250, 250, 250, 0.99);
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15) !important;
+}
+
+#header--nav__heading {
+	color: var(--light);
+	font-size: 2rem;
+	font-weight: 800;
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 1;
+}
+
+#header--nav__heading.change--navheading__color {
+	color: var(--dark-grey);
+}
+
+#header--nav__list {
+	flex-basis: 65%;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+#header--nav__list li a {
+	color: var(--light);
+	font-size: 0.85rem;
+	font-weight: 400;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#header--nav__list li a.grey {
+	color: var(--dark-grey) !important;
+}
+#header--nav__list li a.orange {
+	color: var(--orange) !important;
+}
+
+#header--nav__list li a:hover {
+	color: var(--orange) !important;
+	transition: 0.25s !important;
+}
+
+#header--nav__list li a.btn {
+	color: var(--white) !important;
+	padding: 15px 20px;
+}
+
+#header--inner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	color: var(--light);
+	text-transform: uppercase;
+}
+
+#header--inner h4 {
+	font-size: 1.1rem;
+}
+
+#header--inner h1 {
+	font-size: 5rem;
+	font-weight: 800;
+	line-height: 1.2;
+	margin: 20px 0;
+}
+
+#header--inner a {
+	font-size: 0.9rem;
+	padding: 15px 20px;
+}
+
+/* ----------------------------- 08. About ------------------------------ */
+
+#about--main {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 4rem;
+}
+
+.about--main__program {
+	flex-basis: calc(42.5%);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.about--main__program:nth-child(odd) {
+	margin: 2% 2% 2.5% 5%;
+}
+.about--main__program:nth-child(even) {
+	margin: 2% 5% 2% 2.5%;
+}
+
+.about--main__program img {
+	display: block;
+	margin-right: 2rem;
+}
+
+.about--main__program div {
+	flex-basis: 100%;
+}
+
+.about--main__program div h4 {
+	font-size: 1.1rem;
+	color: var(--dark-grey);
+	font-weight: 600;
+	text-transform: capitalize;
+	letter-spacing: 0.25px;
+}
+
+.about--main__program div p {
+	color: var(--grey);
+	font-size: 0.80rem;
+	line-height: 1.60;
+	margin: 0.3rem 0;
+}
+
+.about--main__program div a {
+	display: block;
+	color: var(--orange);
+	font-size: 0.80rem;
+	font-weight: 500;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+/* ----------------------------- 09. Banner ------------------------------ */
+
+#banner {
+	background-image: url('../images/cta-bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: var(--white);
+	padding: 7.5rem;
+}
+
+#banner h1 {
+	font-size: 2.25rem;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin-bottom: 1.2rem;
+	letter-spacing: 1px;
+}
+
+#banner p {
+	font-size: 1rem;
+	margin-bottom: 1.5rem;
+}
+
+#banner a {
+	font-size: 0.9rem;
+	padding: 15px 20px;
+}
+
+/* ----------------------------- 10. Classes ------------------------------ */
+
+#classes--content,
+#trainers--content {
+	background: var(--white);
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+	justify-content: center;
+	margin-top: 4rem;
+	padding: 0 10%;
+}
+
+#classes--content__btns {
+	flex-basis: 36%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	margin-right: 4%;
+}
+
+.training--class__btn {
+	width: 22rem;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding: 1.87rem;
+	margin-bottom: 2rem;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: color 0.2s ease;
+}
+
+.training--class__btn img {
+	display: block;
+	margin-right: 1.18rem;
+}
+
+.training--class__btn h4 {
+	color: var(--dark-grey);
+	font-size: 1.18rem;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+	text-transform: capitalize;
+}
+
+#classes__schedules--btn {
+	width: 22rem;
+	font-size: 1.18rem !important;
+	font-weight: 500 !important;
+	letter-spacing: 0.5px !important;
+	text-transform: capitalize !important;
+	border-radius: 5px !important;
+	text-align: center !important;
+	padding: 1.2rem 1.5rem !important;
+}
+
+#classes--content__showcase {
+	flex-basis: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: flex-start;
+}
+
+#classes--content__showcase img {
+	width: 100%;
+	display: block;
+	object-fit: cover;
+	border-radius: 5px;
+}
+
+#classes--content__showcase h4 {
+	color: var(--dark-grey);
+	font-size: 1.45rem;
+	font-weight: 700;
+	text-transform: capitalize;
+	margin: 1.5rem 0;
+}
+
+#classes--content__showcase p {
+	color: var(--grey);
+	font-size: 0.9rem;
+	margin-bottom: 1.5rem;
+}
+
+#classes--content__showcase a {
+	padding: 0.8rem 1.3rem;
+}
+
+/* ----------------------------- 11. Schedule ------------------------------ */
+
+#schedule {
+	background-image: url('../images/schedule-bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 8% 0;
+}
+
+#schedule--header h1,
+#schedule--header p {
+	color: var(--white);
+}
+
+#schedule--content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: start;
+	margin-top: 5rem;
+	color: var(--white);
+}
+
+#schedule--content__days {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+#schedule--content__days .schedule--day {
+	color: var(--white);
+	font-size: 0.94rem;
+	font-weight: 500;
+	margin: 0 0.8rem;
+	cursor: pointer;
+	transition: color 0.25s ease;
+}
+
+#schedule--content__days .schedule--day:hover {
+	color: var(--orange);
+}
+
+#schedule--content__trainings {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 2rem;
+}
+
+tr.training--detail {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+tr.training--detail td {
+	flex: 1;
+	max-width: 16rem;
+	height: 6rem;
+	color: var(--white);
+	font-size: 0.82rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--white);
+}
+
+tr.training--detail td.training--name {
+	text-transform: capitalize;
+}
+
+tr.training--detail:nth-child(even) td {
+	border-top: none;
+	border-bottom: none;
+}
+
+tr.training--detail td:nth-child(2) {
+	border-left: none;
+	border-right: none;
+}
+tr.training--detail td:nth-child(3) {
+	border-right: none;
+}
+
+/* ----------------------------- 12. Trainers ------------------------------ */
+
+#trainers--content {
+	overflow: hidden;
+}
+
+.swiper-slide {
+	padding: 0.3rem !important;
+}
+
+.trainer--info {
+	padding: 2rem;
+	border-radius: 5px;
+	position: relative;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+	transition: left 1s ease-in-out;
+	display: flex;
+	flex-direction: column;
+	cursor: grab;
+}
+
+.trainer--info img {
+	display: block;
+	width: 100%;
+	object-fit: cover;
+}
+
+.trainer--info h4 {
+	color: var(--orange);
+	font-size: 0.82rem;
+	font-weight: 500;
+	text-transform: capitalize;
+	margin-top: 1rem;
+}
+
+.trainer--info h2 {
+	color: var(--dark-grey);
+	font-size: 1.19rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin: 0.5rem 0 1rem 0;
+}
+
+.trainer--info p {
+	color: var(--grey);
+	font-size: 0.875rem;
+	margin-bottom: 1rem;
+}
+
+.trainer--info__sm {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.trainer--info__sm a {
+	color: var(--dark-grey);
+	margin-right: 5%;
+	transition: color 0.4s ease;
+}
+
+.trainer--info__sm a:last-child {
+	margin-right: 0;
+}
+
+.trainer--info__sm a:hover {
+	color: var(--orange);
+}
+
+.trainer--info__sm a i {
+	font-size: 1rem;
+}
+
+/* ----------------------------- 13. Contact ------------------------------ */
+#contact {
+	width: 100%;
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+}
+
+#contact--map__container {
+	flex: 1;
+	height: 38rem;
+	display: flex;
+}
+
+#map {
+	width: 100%;
+	height: 100%;
+}
+
+#contact--form__container {
+	flex: 1;
+	height: 38rem;
+	background-image: url('../images/contact-bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding: 5%;
+}
+
+#form {
+	width: 100%;
+	height: 100%;
+	background: var(--white);
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-between;
+	padding: 2.5rem 3rem;
+	border-radius: 0.5rem;
+}
+
+#form input,
+#form textarea {
+	display: block;
+	font-family: inherit;
+	font-size: 13px;
+	font-weight: 400;
+	color: var(--grey);
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
+	padding: 0.5rem 0.7rem;
+	border: 1px solid #ddd;
+	outline: none;
+}
+
+#form #name,
+#form #email,
+#form #subject {
+	height: 2.5rem;
+}
+
+#form #message-box {
+	height: 10rem;
+	overflow: hidden;
+}
+
+#form .btn {
+	align-self: flex-start;
+	padding: 0.7rem !important;
+}
+
+/* ----------------------------- 14. Footer ------------------------------ */
+#footer {
+	background: var(--white);
+	width: 100%;
+	padding: 2.5rem 2rem;
+}
+
+#footer p {
+	display: block;
+	font-size: 0.85rem;
+	font-weight: 400;
+	color: var(--dark-grey);
+	text-transform: capitalize;
+	text-align: center;
+}
+
+/* <----------------------------------------------------------------------------------------
+
+<--------------------------------------- 15. MEDIA QUERIES ------------------------------------->
+
+-------------------------------------------------------------------------------------------*/
+
+/* <------------------------------- 16. Max-width: 1000px ------------------------------------------>*/
+
+@media screen and (max-width: 1000px) {
+	/* -------------- Header --------------*/
+	#header--nav__list {
+		justify-content: space-between;
+	}
+
+	#header--nav__heading {
+		font-size: 1.5rem;
+	}
+	#header--nav__list li a {
+		font-size: 0.75rem;
+	}
+
+	/* -------------- About --------------*/
+	.about--main__program {
+		flex-basis: 100%;
+		margin: 3% !important;
+	}
+
+	/* -------------- Classes --------------*/
+	#classes--content {
+		flex-direction: column;
+	}
+
+	#classes--content__btns {
+		flex-basis: 100%;
+		align-items: flex-start;
+		margin: 0;
+		margin-bottom: 1.5rem;
+	}
+
+	.training--class__btn,
+	#classes__schedules--btn {
+		width: 100%;
+	}
+
+	/* -------------- Trainers --------------*/
+
+	#trainers--content {
+		padding: 0 10%;
+	}
+}
+
+/* <-------------------------------- 17. Max-width: 750px ------------------------------------------>*/
+
+@media screen and (max-width: 750px) {
+	/* -------------- Header --------------*/
+	#header--nav {
+		background: var(--light);
+		transition: background 0.25s;
+	}
+
+	#header--nav__heading {
+		color: var(--light-black);
+		font-size: 2rem;
+	}
+
+	#header--nav__list {
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		transform: translate(-50%, 0);
+		flex-direction: column;
+		width: 85%;
+		height: 0px;
+		overflow: hidden;
+		transition: height 0.2s ease-in-out;
+		background: var(--light);
+	}
+
+	#header--nav__list.set--height {
+		height: 18.75rem;
+	}
+
+	#header--nav__list li {
+		flex: 1;
+		width: 100%;
+		background: var(--light);
+		padding-bottom: 1px;
+	}
+
+	#header--nav__list li a {
+		display: block !important;
+		height: 100%;
+		line-height: 3.75;
+		color: var(--black) !important;
+		font-size: 0.8125rem;
+		letter-spacing: 1px;
+		text-align: center;
+		padding: 0 !important;
+		border-top: 1px solid #eee;
+	}
+
+	#header--nav__hamburger {
+		width: 30px;
+		height: 30px;
+		display: flex !important;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		transition: 0.5s;
+	}
+
+	#header--nav__hamburger span {
+		background: var(--light-black);
+		width: 30px;
+		height: 2px;
+		position: relative;
+		left: 0;
+		transition: all 0.25s;
+	}
+
+	#header--nav__hamburger span.toggle--hamburger {
+		background: transparent !important;
+	}
+
+	#header--nav__hamburger span.toggle--hamburger::before {
+		content: '' !important;
+		width: 100%;
+		transform: translateY(10px) translateX(4px) rotate(45deg) !important;
+	}
+	#header--nav__hamburger span.toggle--hamburger::after {
+		content: '' !important;
+		width: 100%;
+		transform: translateY(-10px) translateX(4px) rotate(-45deg) !important;
+	}
+
+	#header--nav__hamburger span::before,
+	#header--nav__hamburger span::after {
+		content: '';
+		background: var(--light-black);
+		display: block;
+		width: 75%;
+		height: 2px;
+		left: 0;
+		position: absolute;
+		transition: all 0.25s;
+	}
+	#header--nav__hamburger span::before {
+		top: -10px;
+	}
+	#header--nav__hamburger span::after {
+		bottom: -10px;
+	}
+
+	#header--inner {
+		width: 90%;
+		top: calc(50% + 80px);
+		left: 50%;
+		transform: translate(-50%, calc(-50% - 40px));
+	}
+
+	#header--inner h1 {
+		font-size: 4rem;
+	}
+
+	/* -------------- About --------------*/
+
+	#about--header,
+	#classes--header {
+		width: 95%;
+	}
+
+	.about--main__program {
+		margin: 2% !important;
+	}
+	.about--main__program img {
+		margin-right: 0.9rem;
+	}
+
+	.about--main__program div h4 {
+		font-size: 1rem !important;
+	}
+
+	.about--main__program div p,
+	.about--main__program div a {
+		font-size: 0.75rem !important;
+	}
+
+	/* -------------- Banner --------------*/
+	#banner {
+		padding: 7rem 2rem;
+	}
+
+	/* -------------- Classes --------------*/
+	#classes--content {
+		padding: 0 5%;
+	}
+
+	/* -------------- Schedule --------------*/
+	#schedule--content__trainings {
+		width: 100%;
+		padding: 0 0.5rem;
+	}
+
+	#schedule--content__days .schedule--day {
+		font-size: 0.8rem;
+	}
+
+	/* -------------- Trainers --------------*/
+
+	#trainers--content {
+		padding: 0 5%;
+	}
+
+	/* -------------- Contact --------------*/
+	#contact {
+		flex-direction: column;
+	}
+}
+
+/* <-------------------------------- 18. Max-width: 600px ------------------------------------------>*/
+
+@media screen and (max-width: 600px) {
+	/* -------------- Trainers --------------*/
+	#trainers--content {
+		padding: 0 15%;
+	}
+}
+
+/* <-------------------------------- 19. Max-width: 350px ------------------------------------------>*/
+
+@media screen and (max-width: 350px) {
+	/* -------------- Header --------------*/
+	#header--nav__heading {
+		font-size: 1.3rem;
+	}
+
+	#header--inner {
+		width: 95%;
+	}
+
+	#header--inner h1 {
+		font-size: 2.5rem;
+	}
+
+	#header--inner a {
+		font-size: 0.8rem;
+		padding: 10px 15px;
+	}
+
+	/* -------------- About --------------*/
+
+	#about--header h1,
+	#classes--header h1 {
+		font-size: 1.5rem;
+	}
+
+	.about--main__program img {
+		display: none;
+	}
+
+	/* -------------- Classes --------------*/
+	#classes--content {
+		padding: 0 2%;
+	}
+
+	.training--class__btn h4,
+	#classes__schedules--btn,
+	#classes--content__showcase h4,
+	#classes--content__showcase a {
+		font-size: 1rem !important;
+	}
+
+	#classes--content__showcase a {
+		width: 100%;
+	}
+
+	/* -------------- Schedule --------------*/
+	tr.training--detail td {
+		font-size: 0.7rem;
+	}
+
+	/* -------------- Trainers --------------*/
+
+	#trainers--content {
+		padding: 0 5%;
+	}
+
+	/* -------------- Contact --------------*/
+	#form {
+		padding: 1.5rem 1rem;
+	}
+}
